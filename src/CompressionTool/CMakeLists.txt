@@ -1,12 +1,12 @@
-add_test_binary("SimpleFeatureInteraction")
+add_test_binary("CompressionTool")
 
 add_executable(
-  SimpleFeatureInteraction
+        CompressionTool
 
         main.cpp
 )
 
-set_target_properties(SimpleFeatureInteraction PROPERTIES
+set_target_properties(CompressionTool PROPERTIES
   CXX_STANDARD 17
   CXX_STANDARD_REQUIRED ON
 )

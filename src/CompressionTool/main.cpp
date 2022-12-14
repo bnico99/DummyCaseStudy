@@ -17,9 +17,9 @@ public:
   unsigned long Size;
 };
 
-PackageData compress(PackageData Data) {
+PackageData compress(PackageData Data, long Iterations) {
   Data.Data = Data.Data.substr(0, Data.Data.size() / 2);
-  fpcsc::sleep_for_secs(3);
+  fpcsc::sleep_for_secs(3*Iterations);
   return Data;
 }
 
@@ -37,6 +37,7 @@ PackageData encrypt(PackageData Data) {
 
 static bool UseEncryption = false;
 static bool UseCompression =  false;
+static long Iterations = 0;
 
 void loadConfigFromArgv(int argc, char *argv[]) {
   if (fpcsc::isFeatureEnabled(argc, argv, std::string("--enc"))) {
@@ -45,12 +46,21 @@ void loadConfigFromArgv(int argc, char *argv[]) {
   if (fpcsc::isFeatureEnabled(argc, argv, std::string("--compress"))) {
     UseCompression = true;
   }
+
+  Iterations = fpcsc::getFeatureValue(argc, argv, "--iterations");
+
+  if (!Iterations) {
+    std::cerr << "Required feature missing." << "\n";
+    std::exit(1);
+  }
 }
 
 
 void sendPackage(PackageData Data) {
+  fpcsc::sleep_for_secs(Iterations);
+
   if (UseCompression) {
-    Data = compress(Data);
+    Data = compress(Data, Iterations);
   }
   if (UseEncryption) {
     if (not UseCompression) {
