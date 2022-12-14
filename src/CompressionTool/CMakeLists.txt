@@ -3,7 +3,7 @@ add_test_binary("SimpleFeatureInteraction")
 add_executable(
   SimpleFeatureInteraction
 
-  SFImain.cpp
+        main.cpp
 )
 
 set_target_properties(SimpleFeatureInteraction PROPERTIES

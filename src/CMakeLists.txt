@@ -1,7 +1,2 @@
-add_subdirectory(SingleLocalSimple)
-add_subdirectory(SingleLocalMultipleRegions)
-add_subdirectory(MultiSharedMultipleRegions)
-add_subdirectory(SimpleFeatureInteraction)
-add_subdirectory(SimpleSleepLoop)
-add_subdirectory(SimpleBusyLoop)
-add_subdirectory(PerfDetectiveExample)
+add_subdirectory(CompressionTool)
+
