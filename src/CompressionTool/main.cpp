@@ -63,7 +63,7 @@ void sendPackage(PackageData Data) {
     Data = compress(Data, Iterations);
   }
   if (UseEncryption) {
-    if (not UseCompression) {
+    if (UseCompression) {
       Data = addPadding(Data);
     }
 
